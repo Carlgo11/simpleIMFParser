@@ -1,0 +1,17 @@
+{
+  "type": "module",
+  "main": "src/index.ts",
+  "name": "SimpleIMFParser",
+  "version": "0.0.0-dev",
+  "scripts": {
+    "start": "node src/index.ts",
+    "test": "node --import tsx --test test/*.test.ts test/**/*.test.ts"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^9.4.0",
+    "@types/node": "^22.10.7",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
+  }
+}
