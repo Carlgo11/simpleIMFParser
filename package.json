@@ -1,17 +1,33 @@
 {
   "type": "module",
-  "main": "src/index.ts",
-  "name": "SimpleIMFParser",
-  "version": "0.0.0-dev",
+  "main": "dist/index.js",
+  "name": "@carlgo11/simpleimfparser",
+  "description": "Simple IMF parser",
+  "version": "0.0.0-development",
+  "license": "GPL-3.0",
+  "author": "Carlgo11",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/carlgo11/SimpleIMFParser.git"
+  },
+  "bugs": {
+    "url": "https://github.com/carlgo11/SimpleIMFParser/issues"
+  },
+  "homepage": "https://github.com/carlgo11/SimpleIMFParser#readme",
   "scripts": {
     "start": "node src/index.ts",
-    "test": "node --import tsx --test test/*.test.ts test/**/*.test.ts"
+    "test": "node --import tsx --test test/*.test.ts test/**/*.test.ts",
+    "build": "npx tsc"
   },
+  "private": false,
   "devDependencies": {
     "@faker-js/faker": "^9.4.0",
     "@types/node": "^22.10.7",
     "ts-node": "^10.9.2",
     "tsx": "^4.19.2",
     "typescript": "^5.7.3"
+  },
+  "engines": {
+    "node": ">=20"
   }
 }
