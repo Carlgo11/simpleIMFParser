@@ -1,6 +1,6 @@
 import { Readable } from 'node:stream';
-import parseHeaders from './parseHeaders';
-import streamToString from '../utils/streamToString';
+import parseHeaders from './parseHeaders.js';
+import streamToString from '../utils/streamToString.js';
 
 /**
  * Parses the raw email message (headers + body).

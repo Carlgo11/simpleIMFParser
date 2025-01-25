@@ -1,4 +1,4 @@
-import Envelope from '../types/Envelope';
+import Envelope from '../types/Envelope.js';
 
 /**
  * Parses envelope metadata from the SMTP transaction.

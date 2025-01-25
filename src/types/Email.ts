@@ -1,4 +1,4 @@
-import Envelope from './Envelope';
+import Envelope from './Envelope.js';
 
 export class Email {
   envelope: Envelope;

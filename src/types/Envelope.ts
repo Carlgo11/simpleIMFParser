@@ -1,4 +1,4 @@
-import Sender from './Sender';
+import Sender from './Sender.js';
 
 export default interface Envelope {
   id: string;

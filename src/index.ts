@@ -1,7 +1,7 @@
 import { Readable } from 'node:stream';
-import { Email } from './types/Email';
-import parseEnvelope from './parsers/parseEnvelope';
-import parseMessage from './parsers/parseMessage';
+import { Email } from './types/Email.js';
+import parseEnvelope from './parsers/parseEnvelope.js';
+import parseMessage from './parsers/parseMessage.js';
 
 export default async function parseEmail(
   rawData: string | Readable,
