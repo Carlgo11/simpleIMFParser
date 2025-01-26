@@ -38,14 +38,6 @@ export default interface Envelope {
   to: string[];
 
   /**
-   * The timestamp when the envelope was received.
-   *
-   * @type {Date}
-   * @since 0.0.1
-   */
-  receivedTime: Date;
-
-  /**
    * The sender details, including additional metadata about the sender.
    *
    * @type {Sender}

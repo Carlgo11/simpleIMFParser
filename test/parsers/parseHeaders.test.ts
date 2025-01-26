@@ -17,16 +17,13 @@ describe('Parse Headers', () => {
     const headersString = Object.entries(headers).map(([key, value]) => `${key}: ${value}`).join('\r\n');
     assert.ok(parseHeaders(headersString));
   });
-/*
-  it('Extra text after email address', async () => {
-    const headers: Record<string, string> = {
-      'To': `${faker.person.fullName()} <${faker.internet.email()}> ${faker.lorem.sentence()}`,
-    };
-    const headersString = Object.entries(headers).map(([key, value]) => `${key}: ${value}`).join('\r\n');
-    await assert.rejects(async () => parseHeaders(headersString));
-  });*/
 
-  it('Missing : separator.', async () => {
-    await assert.rejects(async () => parseHeaders(`Subject ${faker.lorem.sentence()}`));
+  it('Rejects Folding white space between field name and colon', () => {
+    const headers = 'Subject    : Test';
+    assert.rejects(async () => parseHeaders(headers));
+  });
+
+  it('Rejects Missing : separator.', () => {
+    assert.rejects(async () => parseHeaders(`Subject ${faker.lorem.sentence()}`));
   });
 });
