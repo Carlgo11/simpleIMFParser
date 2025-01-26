@@ -1,0 +1,8 @@
+{
+  "entryPoints": ["src"],
+  "out": "docs",
+  "entryPointStrategy": "expand",
+  "excludeExternals": false,
+  "plugin": ["typedoc-plugin-merge-modules"],
+  "mergeModulesMergeMode": "module"
+}

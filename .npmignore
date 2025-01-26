@@ -1,6 +1,5 @@
-src/
-test/
-dist/
-node_modules/
-tsconfig.json
+*
 .*
+!dist/*
+!dist/**
+!package.json

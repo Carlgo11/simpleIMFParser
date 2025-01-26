@@ -1,7 +1,7 @@
 import { describe, it } from 'node:test';
 import { faker } from '@faker-js/faker';
 import assert from 'node:assert';
-import parseMessage from '../../src/parsers/parseMessage';
+import parseMessage from '../../src/parsers/parseMessage.js';
 
 describe('Parse Message', () => {
   it('Should parse valid message', async () => {

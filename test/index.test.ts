@@ -1,9 +1,9 @@
 import { describe, it } from 'node:test';
 import { faker } from '@faker-js/faker';
 import assert from 'node:assert';
-import parseEmail from '../src';
+import parseEmail from '../src/index.js';
 import { Readable } from 'node:stream';
-
+import Envelope from '../src/types/Envelope.js';
 describe('simpleIMFParser', () => {
   it('Should parse valid message (string)', async () => {
     const headers: Record<string, string> = {

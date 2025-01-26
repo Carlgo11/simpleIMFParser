@@ -1,6 +1,7 @@
 {
   "type": "module",
-  "main": "dist.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "name": "@carlgo11/simpleimfparser",
   "description": "Simple IMF parser",
   "version": "0.0.0-development",
@@ -17,7 +18,8 @@
   "scripts": {
     "start": "node src/index.ts",
     "test": "node --import tsx --test test/*.test.ts test/**/*.test.ts",
-    "build": "npx tsc && npx esbuild dist/index.js --bundle --minify --outfile=dist.js --platform=node"
+    "build": "npx tsc",
+    "docs": "npx typedoc"
   },
   "private": false,
   "dependencies": {
@@ -26,8 +28,11 @@
   "devDependencies": {
     "@faker-js/faker": "^9.4.0",
     "esbuild": "^0.24.2",
+    "jsdoc": "^4.0.4",
     "ts-node": "^10.9.2",
     "tsx": "^4.19.2",
+    "typedoc": "^0.27.6",
+    "typedoc-plugin-merge-modules": "^6.1.0",
     "typescript": "^5.7.3"
   },
   "engines": {

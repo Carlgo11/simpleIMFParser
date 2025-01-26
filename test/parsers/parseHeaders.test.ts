@@ -1,8 +1,8 @@
 import test, { describe, it } from 'node:test';
 import { faker } from '@faker-js/faker';
 import assert from 'node:assert';
-import parseMessage from '../../src/parsers/parseMessage';
-import parseHeaders from '../../src/parsers/parseHeaders';
+import parseMessage from '../../src/parsers/parseMessage.js';
+import parseHeaders from '../../src/parsers/parseHeaders.js';
 
 
 
