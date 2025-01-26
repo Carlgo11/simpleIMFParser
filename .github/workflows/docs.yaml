@@ -1,5 +1,8 @@
 name: Build & Publish Documentation
-on: push
+on:
+  push:
+    paths:
+      - src
 
 jobs:
   build:
