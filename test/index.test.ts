@@ -9,11 +9,11 @@ describe('simpleIMFParser', () => {
 
   it('Should parse valid message (string)', async () => {
     const headers: Record<string, string> = {
-      'Subject': faker.lorem.sentence(),
+      'Subject': faker.lorem.sentence(9),
       'Message-ID': `<${faker.string.uuid()}@${faker.internet.domainName()}>`,
       'from': `"${faker.person.fullName()}" <${faker.internet.email()}>`,
       'To': `${faker.person.fullName()} <${faker.internet.email()}>`,
-      'Date': `${date}, `,
+      'Date': date,
     };
     const headersString = Object.entries(headers).map(([key, value]) => `${key}: ${value}`).join('\r\n');
     const body = faker.lorem.paragraphs(5, '\r\n');
@@ -27,6 +27,7 @@ describe('simpleIMFParser', () => {
         tls: true
       }
     });
+    // console.log(email.toString())
     assert.ok(email.toString());
   });
 

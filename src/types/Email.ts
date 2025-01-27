@@ -147,11 +147,48 @@ export default class Email {
    * @since 0.0.1
    */
   toString(): string {
-    let _headers = '';
-    Object.entries(this.headers).forEach(([k, v]) => _headers += `${pascalCase(k)}: ${v}\r\n`);
-
-    return `${_headers}\r\n\r\n${this.body}`;
+    return `${wrapHeaders(this.headers)}\r\n\r\n${this.body}`;
   }
+}
+
+/**
+ * Wraps email headers according to RFC 5322 while preserving non-splittable headers.
+ * @param {Record<string, string | string[]>} headers - The headers to wrap.
+ * @returns {string} - Wrapped and formatted headers as a string.
+ */
+function wrapHeaders(headers: Record<string, string | string[]>): string {
+  const maxLineLength = 78;
+  const nonSplittableHeaders = new Set([
+    'message-id', 'in-reply-to', 'references', 'mime-version',
+    'return-path', 'dkim-signature', 'arc-seal',
+    'arc-message-signature', 'arc-authentication-results',
+    'authentication-results'
+  ]);
+  let formattedHeaders = '';
+
+  for (const [key, value] of Object.entries(headers)) {
+    const formattedKey = pascalCase(key);
+    const headerValue = Array.isArray(value) ? value.join(', ') : value;
+
+    if (nonSplittableHeaders.has(key.toLowerCase())) {
+      // Preserve this header as a single line
+      formattedHeaders += `${formattedKey}: ${headerValue}\r\n`;
+    } else {
+      // Wrap other headers normally
+      let currentLine = `${formattedKey}:`;
+      headerValue.split(/\s+/).forEach(word => {
+        if (currentLine.length + word.length + 1 > maxLineLength) {
+          formattedHeaders += `${currentLine}\r\n `;
+          currentLine = word;
+        } else {
+          currentLine += ` ${word}`;
+        }
+      });
+      formattedHeaders += `${currentLine}\r\n`;
+    }
+  }
+
+  return formattedHeaders.trim();
 }
 
 /**
@@ -166,7 +203,7 @@ export default class Email {
  */
 function pascalCase(str: string): string {
   return str.replace(/(\w)(\w*)/g,
-    function(g0, g1, g2) {
+    function(_g0, g1, g2) {
       return g1.toUpperCase() + g2.toLowerCase();
     });
 }
