@@ -12,10 +12,8 @@ export default async function parseMessage(rawData: string | Readable): Promise<
 
   if (typeof rawData === 'string') {
     rawEmail = rawData;
-  } else if (rawData instanceof Readable) {
-    rawEmail = await streamToString(rawData);
   } else {
-    throw new TypeError('Invalid rawData type. Expected a string or a Readable stream.');
+    rawEmail = await streamToString(rawData);
   }
 
   const headerBoundary = rawEmail.indexOf('\r\n\r\n');
@@ -26,7 +24,7 @@ export default async function parseMessage(rawData: string | Readable): Promise<
   }
 
   return {
-    headers: parseHeaders(rawHeaders),
+    headers: await parseHeaders(rawHeaders),
     body,
   };
 }

@@ -4,7 +4,7 @@ import validator from 'validator';
  * Parses headers from a raw IMF header string.
  * @param {string} rawHeaders - The raw headers as a string
  * @param {'strict'|'relaxed'} mode - Strict mode rejects emails with invalid headers. Relaxed simply deletes invalid headers.
- * @returns {Promise<Record<string, string | string[]>} - A dictionary of headers (handling duplicates)
+ * @returns {Promise<Record<string, string | string[]>>} - A dictionary of headers (handling duplicates)
  * @throws {Error} - If any header fails validation.
  * @since 0.0.1
  */
